@@ -24,16 +24,22 @@
             <Label Text="Contraseña" />
             <Entry Placeholder="Contraseña"
                    IsPassword="True"></Entry>
-            
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <Label Text="Recuerdame en este dispositivo"></Label>
-            <Switch></Switch>
-            </StackLayout>
 
-            <ActivityIndicator>
-            </ActivityIndicator>
+                <ActivityIndicator>
+                </ActivityIndicator>
 
-            <StackLayout
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center">
+                    <Label Text="Recuerdame en este dispositivo"></Label>
+                    <Switch></Switch>
+                </StackLayout>
+
+                <Label Text="Olvidaste tu contraseña?" 
+                       TextColor="Blue"
+                       HorizontalOptions="Center"/>
+
+
+                <StackLayout
                 Margin="70,-20">
                 <Button Text="Login"
                         BackgroundColor="CadetBlue"

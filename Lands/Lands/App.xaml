@@ -6,6 +6,7 @@
     <Application.Resources>
         <!--Diccionario de recursos-->
         <ResourceDictionary>
+            <!--obj infra de la clase IntanceLl¿ocator y a la propiedad se le pondra "Locator"-->
             <infra:InstanceLocator x:Key="Locator" />
         </ResourceDictionary>
 
