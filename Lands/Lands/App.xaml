@@ -6,7 +6,8 @@
     <Application.Resources>
         <!--Diccionario de recursos-->
         <ResourceDictionary>
-            <!--obj infra de la clase IntanceLl¿ocator y a la propiedad se le pondra "Locator"-->
+            <!--obj infra de la clase IntanceLlocator y a la propiedad se le pondra "Locator"
+            Esto para ligar MainViewMOdel con LoginPage-->
             <infra:InstanceLocator x:Key="Locator" />
         </ResourceDictionary>
 

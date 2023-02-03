@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Lands.ViewModels
+﻿namespace Lands.ViewModels
 {
-    internal class MainViewModel
+    public class MainViewModel
     {
+        #region ViewModels
+        //Obj Login
+        public LoginViewModel Login { get; set; }
+        #endregion
+
+        #region Constructors
+        public MainViewModel()
+        {
+            //Instanciamos
+            this.Login = new LoginViewModel();
+        }
+        #endregion
     }
 }

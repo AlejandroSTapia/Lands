@@ -3,62 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lands.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Login">
+             Title="Lands">
+    <!--Bindado al obj Main instanciado en la clase IntanceLocator y ese obj esta en el diccionario y ahi esta llave LOcator-->
+    
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Login}">
         <StackLayout Padding="40">
-            <Label Text="Lands"
-                   FontSize="Large"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-               />
+
             <!--WidthRequest="200" es para un tamaño en especifico de la img
             Aspect=""AspectFit o AspectFill ajusta al espaciio que haya-->
             <Image Source="world.png" 
                    WidthRequest="200"/>
+
+                <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="Correo"
               />
-            <Entry Placeholder="Correo"
-                   Keyboard="Email"></Entry>
+            <Entry 
+                Placeholder="Correo" 
+                Keyboard="Email"
+                Text="{Binding Email, Mode=TwoWay}"></Entry>
             
             <Label Text="Contraseña" />
-            <Entry Placeholder="Contraseña"
-                   IsPassword="True"></Entry>
-
-                <ActivityIndicator>
-                </ActivityIndicator>
-
-                <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Center">
-                    <Label Text="Recuerdame en este dispositivo"></Label>
-                    <Switch></Switch>
+            <Entry 
+                Placeholder="Contraseña"
+                IsPassword="True"
+                Text="{Binding Password, Mode=TwoWay}"></Entry>
                 </StackLayout>
 
-                <Label Text="Olvidaste tu contraseña?" 
+                <ActivityIndicator 
+                    VerticalOptions="CenterAndExpand"
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}">
+                </ActivityIndicator>
+
+                <StackLayout 
+                    Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand">
+                    <Label Text="Recuerdame en este dispositivo"></Label>
+                    <Switch
+                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"></Switch>
+                </StackLayout>
+
+                <Label Text="Olvidaste tu contraseña?"
                        TextColor="Blue"
-                       HorizontalOptions="Center"/>
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand" />
+
+
 
 
                 <StackLayout
-                Margin="70,-20">
+                Margin="20,0"
+                    Orientation="Horizontal"
+                             VerticalOptions="CenterAndExpand">
                 <Button Text="Login"
                         BackgroundColor="CadetBlue"
                         CornerRadius="10"
                         HeightRequest="45"
-                        TextColor="White">
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding LoginCommand}">
 
                 </Button>
-                <Button Text="Registrarme"
+                <Button 
+                    Text="Registrarme"
                         BackgroundColor="CadetBlue"
                         CornerRadius="10"
                         HeightRequest="45"
-                        TextColor="White">
+                        TextColor="White"
+                            HorizontalOptions="FillAndExpand">
 
                 </Button>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Padding="40"
-                         HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" Padding="15"
+                         HorizontalOptions="Center"
+                             VerticalOptions="EndAndExpand">
                 <Image Source="google.png" 
                        WidthRequest="40"/>
                 <Image Source="facebook.png"
