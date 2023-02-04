@@ -63,7 +63,8 @@
                         HeightRequest="45"
                         TextColor="White"
                         HorizontalOptions="FillAndExpand"
-                        Command="{Binding LoginCommand}">
+                        Command="{Binding LoginCommand}"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}">
 
                 </Button>
                 <Button 
@@ -72,7 +73,8 @@
                         CornerRadius="10"
                         HeightRequest="45"
                         TextColor="White"
-                            HorizontalOptions="FillAndExpand">
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}">
 
                 </Button>
             </StackLayout>
