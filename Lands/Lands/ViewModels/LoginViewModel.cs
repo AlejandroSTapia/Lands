@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Lands.Views;
 
 namespace Lands.ViewModels
 {
@@ -14,6 +15,7 @@ namespace Lands.ViewModels
 
         #region Atribbs
         //Crearemos una propiedad privada por cada atributo que se refresque
+        private string email;
         private string password;
         private bool isRunning;
         private bool isEnabled;
@@ -22,11 +24,12 @@ namespace Lands.ViewModels
 
         #region Properties
 
-        //Propiedad de email 
+        //Propiedad de email para refrescar
         //se define del tipo quesera la propiedad
         public string Email
         {
-            get; set;
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
         }
 
         //Propiedad password
@@ -93,7 +96,7 @@ namespace Lands.ViewModels
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            //navegar a otra pagina
+            //
             if (this.Email != "neil.tapia11@gmail.com" || this.Password != "1234")
             {
                 this.IsRunning = false;
@@ -106,13 +109,18 @@ namespace Lands.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            //Si el usuario llego hasta aqui, antes de navegar a otra pagina, le decimos que esya bien
-            await Application.Current.MainPage.DisplayAlert(
-                "Ok", "Todo correcto", "Aceptar");
-            return;
-            {
+            //al navegar a la otra page, y regresar, se vacien los campos
+            this.Email = string.Empty;
+            this.Password = string.Empty;
 
-            }
+
+            //Instancia, con esto, antes de pintar la CountriesPage estamos estableciendo CountriesViewModel
+            MainViewModel.GetInstance().Countries = new CountriesViewModel();
+
+            //para navegar se apila(push) pop(deshapilar), metodos asincronos
+            //Antes, instanciar VM refrenciar la MVM una unica vez con singleton
+            await Application.Current.MainPage.Navigation.PushAsync(new CountriesPage());
+          
         }
 
 
@@ -129,6 +137,10 @@ namespace Lands.ViewModels
             this.IsRemembered = true;
             //valor por default de button
             this.IsEnabled = true;
+
+            //Colocamos de manera temporal los datos
+            this.Email = "neil.tapia11@gmail.com";
+            this.Password = "1234";
         }
         #endregion
     }
